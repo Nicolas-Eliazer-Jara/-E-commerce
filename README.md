@@ -15,6 +15,10 @@ E-commerce desarrollado con **Next.js**, **TypeScript**, **TailwindCSS** y manej
 
 ---
 
+## 📸 Vista previa
+
+![Portfolio Screenshot](./public/preview.png)
+
 ## 📦 Funcionalidades
 
 - Listado de productos dinámico

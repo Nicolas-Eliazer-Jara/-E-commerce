@@ -1,14 +1,18 @@
 "use client";
 import Image from "next/image";
-import fondo from "@/public/fondo2.jpg";
+import fondo from "@/public/fondo.jpg";
 import { useEffect, useReducer, useState } from "react";
 import Product from "@/app/types/card";
 import { cardReducer } from "../reducers/cardReducers";
+import borrar from '@/public/thrash.png'
 
 export default function Shop() {
   const [product, setProduct] = useState<Product[]>([]);
 
+
   const [state, dispatch] = useReducer(cardReducer, []);
+  const total = state.reduce((acc , items )=>acc + items.price ,0);
+
 
   useEffect(() => {
     async function fetchProduc() {
@@ -31,7 +35,7 @@ export default function Shop() {
         <div className="grid grid-cols-3 col-span-2 ">
           {product.map(({ id, title, image, price }) => (
             <div
-              className="bg-[white] text-black hover:bg-black hover:text-white border  p-5 m-5  h-[355px] w-[200px] "
+              className="bg-[white] text-black  flex flex-col justify-between p-5 m-3  h-[355px] w-[270px] "
               key={id}
             >
               <Image
@@ -41,7 +45,8 @@ export default function Shop() {
                 width={100}
                 height={100}
               />
-              <h1 className="pt-3 pb-3 text-[12px]">{title}</h1>
+
+              <h1 className="pb-3   text-[15px]">{title.slice(0,50)}{title.length > 51 && '...'}</h1>
               <p>$ {price}</p>
               <button
                 onClick={() =>
@@ -50,35 +55,41 @@ export default function Shop() {
                     payload: { id, title, image, price },
                   })
                 }
-                className="text-gray-700  p-2 bg-gray-900 w-full"
+                className="rounded-2xl p-2 bg-gray-900  text-white w-full"
               >
                 agregar al carrito
               </button>
-            </div>
+              </div>
           ))}
         </div>
         
-        <div className="bg-gray-700 w-full p-2 mt-5 ">
-        <h1>productos deleccionados</h1>
-        {state.map(({ id, title, image}) => (
-          <div className="bg-gray-800 mt-2 flex p-2 items-center" key={id}>
+        <div className=" w-full p-2 mt-5 ">
+        <h1 className="text-black text-center bg-gray-300 p-2">MI COMPRA</h1>
+        {state.map(({ id, title, image, price}) => (
+          <div className=" mt-2 flex p-2 items-center bg-white justify-around" key={id}>
             <Image
-            className="object-cover"
+            className="object-contain h-[50px]"
             alt={title}
             src={image}
-            width={40}
-            height={20}></Image>
-            <h1 className="text-white  px-2">{title}</h1>
-            <button
+            width={50}
+            height={50}></Image>
+            <h1 className="text-black px-4">{title.slice(0,50)}</h1>
+            <p className="text-black">{price}</p>
+            <Image
+            src={borrar}
+            alt='borrar'
+            width={37}
               onClick={() => dispatch({ type: "delete", payload: id })}
-              className="bg-red-600  text-white  rounded-2xl p-2 "
+              className="p-2 object-contain"
             >
-              eliminar
-            </button>
+            </Image>
           </div>
         ))}
-        <p>precio</p>
-        <button className="p-2 bg-green-700 text-white mt-3 w-full">comprar</button>
+        <div className="flex justify-between p-2 ">
+        <p className="text-black p-2 ">Total</p>
+        <p className="text-black">{total.toFixed(2)}</p>
+        </div>
+        <button className="p-2 rounded-2xl bg-green-700 text-white mt-3 w-full">comprar</button>
         </div>
       </div>
     </div>
