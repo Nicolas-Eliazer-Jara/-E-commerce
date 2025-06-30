@@ -17,7 +17,7 @@ E-commerce desarrollado con **Next.js**, **TypeScript**, **TailwindCSS** y manej
 
 ## 📸 Vista previa
 
-![Portfolio Screenshot](./public/preview.png)
+![Portfolio Screenshot](./public/demo.gif)
 
 ## 📦 Funcionalidades
 

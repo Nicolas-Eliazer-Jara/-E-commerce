@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Nav from '@/app/components/nav'
+import Fotter from '@/app/components/footer'
 import "./styles/globals.css";
 
 
@@ -15,9 +16,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="bg-[#E6E8E6]">
+      <body className="">
          <Nav></Nav>
         {children}
+        <Fotter></Fotter>
       </body>
     </html>
   );
