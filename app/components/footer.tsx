@@ -5,7 +5,7 @@ export default function footer(){
   return (
     <>
 
-        <div className="  text-tercero w-full  bg-[#292623]">
+        <div className="  text-white w-full  bg-segundo">
           <div className=" w-[90%] mx-auto border-b-[1px] border-[#ffffff54]">
             <h1 className="text-[17px] text-center pt-5  pb-5">Nicolas Eliazer Jara</h1>
           </div>

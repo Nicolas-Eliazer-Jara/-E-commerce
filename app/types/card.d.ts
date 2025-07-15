@@ -3,7 +3,8 @@ export type Product = {
     title:string;
     image:string;
     price:number;
-
+    category:string;
+    rating:string;
 };
 
 export type Action = 

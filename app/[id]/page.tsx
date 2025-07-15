@@ -1,4 +1,3 @@
-// app/products/[id]/page.tsx
 "use client";
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
@@ -8,10 +7,9 @@ import { Product } from "@/app/store/useCart";
 import publi from "@/public/Fondo/fondo.png";
 import Link from "next/link";
 
-
 export default function ProductDetailPage() {
   const { id } = useParams();
-  const [product, setProduct] = useState<Product>(null);
+  const [product, setProduct] = useState<Product | null>(null);
   const { addToCart } = useCart();
   const [compra, setCompra] = useState<string | null>(null);
 
@@ -19,9 +17,8 @@ export default function ProductDetailPage() {
     setCompra("Compra exitosa");
     setTimeout(() => {
       setCompra(null);
-    }, 3000); 
+    }, 3000);
   };
-
 
   useEffect(() => {
     fetch(`https://fakestoreapi.com/products/${id}`)
@@ -29,95 +26,96 @@ export default function ProductDetailPage() {
       .then(setProduct);
   }, [id]);
 
-  if (!product) return <p className=" text-center h-screen w-full pt-[250px]">Cargando...</p>;
+  if (!product) return <p className="text-center h-full w-full pt-[250px]">Cargando...</p>;
 
   return (
-    <div className=" text-[#292623] bg-gray-200">
-      
+    <div className="text-[#292623] bg-gray-200 min-h-screen">
       <div className="relative h-[200px] w-full">
         <Image
-          className="w-full  h-[200px] object-cover"
+          className="w-full h-[200px] object-cover"
           src={publi}
           alt="publi"
           fill
           quality={100}
-        ></Image>
+        />
       </div>
-      <button className="bg-blue-600 hover:cursor-pointer hover:bg-blue-800 p-2 ml-17 mt-5 rounded"><Link  className="text-white" href="/">Volver</Link></button>
-      <div className="bg-white w-[90%] mx-auto mt-5 rounded">
-        <div className=" flex flex-row">
-          <div className="basis-6/8 mt-5 border-b border-b-gray-200 relative">
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
+        <Link
+          href="/"
+          className="inline-block bg-blue-600 hover:bg-blue-800 text-white py-2 px-4 rounded mb-5"
+        >
+          Volver
+        </Link>
+
+        <div className="bg-white rounded-lg shadow-md p-4 md:p-8 flex flex-col lg:flex-row">
+          {/* Imagen del producto */}
+          <div className="w-full lg:w-1/2 flex justify-center items-center mb-6 lg:mb-0">
             <Image
               src={product.image}
               alt={product.title}
-              fill
-          quality={100}
-              className="object-contain mb-4 w-full p-20 h-[500px]"
+              width={500}
+              height={500}
+              className="object-contain w-full max-h-[500px]"
             />
           </div>
 
-          <div className=" basis-3/8 border p-5 border-gray-300 rounded m-5">
-            <h1 className="text-[20px] pb-2  ">{product.title}</h1>
-            <p className="text-blue-600  pb-2 text-[14px] ">
+          {/* Detalles del producto */}
+          <div className="w-full lg:w-1/2 p-4">
+            <h1 className="text-2xl font-semibold mb-2">{product.title}</h1>
+            <p className="text-blue-600 mb-2 text-sm">
               ⭐ {product.rating.rate} ({product.rating.count} reviews)
             </p>
-            <p className=" text-[25px] pb-2  ">${product.price}</p>
-            <p className=" text-[14px]  text-green-700">Devolución gratis</p>
-            <p className=" text-[12px] pb-2   text-gray-600">
+            <p className="text-3xl font-bold mb-2">${product.price}</p>
+            <p className="text-green-700 text-sm mb-2">Devolución gratis</p>
+            <p className="text-gray-600 text-xs mb-4">
               Tenés 30 días desde que lo recibís.
             </p>
-            <div>
-              <h1 className="text-[14px]">Color</h1>
-              <div className="flex ">
-                <p className=" text-[11px] hover:cursor-pointer bg-[#292623] border border-gray-500 rounded px-4 py-4 mr-1">
-                  
-                </p>
-                <p className=" text-[11px] hover:cursor-pointer bg-gray-500 hover:bg-gray-600 border border-gray-500 rounded px-4 py-4 mr-1">
-                  
-                </p>
-                <p className=" text-[11px] hover:cursor-pointer  bg-blue-500 hover:bg-blue-600border border-gray-500 rounded px-4 py-4 mr-1">
-                  
-                </p>
-                <p className=" text-[11px] hover:cursor-pointer  bg-red-500 hover:bg-red-600 border border-gray-500 rounded px-4 py-4 mr-1">
-                  
-                </p>
-                <p className=" text-[11px] hover:cursor-pointer  bg-green-500 hover:bg-green-600 border border-gray-500 rounded px-4 py-4 mr-1">
-                  
-                </p>
-              </div>
 
-              <h1 className="text-[14px] mt-5">Stock disponible</h1>
-              <div className="flex">
-                <p className="text-[12px] text-gray-600">
-                  Almacenado y enviado por
-                </p>
-                <p className="text-green-700 text-[12px] ml-1">
-                  Correo Argentino
-                </p>
+            <div className="mb-4">
+              <h2 className="text-sm font-medium mb-2">Colores</h2>
+              <div className="flex gap-2">
+                <span className="w-6 h-6 rounded bg-[#292623] border" />
+                <span className="w-6 h-6 rounded bg-gray-500 border" />
+                <span className="w-6 h-6 rounded bg-blue-500 border" />
+                <span className="w-6 h-6 rounded bg-red-500 border" />
+                <span className="w-6 h-6 rounded bg-green-500 border" />
               </div>
             </div>
 
-            <div className="block"> 
+            <div className="mb-6">
+              <h2 className="text-sm font-medium">Stock disponible</h2>
+              <p className="text-xs text-gray-600">
+                Almacenado y enviado por <span className="text-green-700">Correo Argentino</span>
+              </p>
+            </div>
+
+            <div className="flex flex-col gap-2">
               <button
-                className="mt-4 hover:cursor-pointer bg-blue-600 text-white px-4 py-2 rounded w-full hover:bg-blue-800"
+                className="bg-blue-600 hover:bg-blue-800 text-white py-2 px-4 rounded w-full"
                 onClick={messageCompra}
               >
                 Comprar ahora
               </button>
               <button
-                className="mt-4 hover:cursor-pointer bg-blue-200 text-blue-600 px-4 py-2 rounded w-full hover:bg-blue-300"
+                className="bg-blue-200 hover:bg-blue-300 text-blue-700 py-2 px-4 rounded w-full"
                 onClick={() => addToCart(product)}
               >
                 Agregar al carrito
               </button>
               {compra && (
-          <p className="mt-4 text-center text-green-600 font-semibold animate-fade-in">{compra}</p>
-        )}
+                <p className="mt-2 text-center text-green-600 font-semibold animate-fade-in">
+                  {compra}
+                </p>
+              )}
             </div>
           </div>
         </div>
-        <div className=" m-5">
-          <p className="text-[16px] mb-2 w-[750px] h-[150px]">{product.description}</p>
+
+        {/* Descripción */}
+        <div className="bg-white rounded-lg mt-6 p-4 md:p-6">
+          <h2 className="text-lg font-medium mb-2">Descripción</h2>
+          <p className="text-sm text-gray-800">{product.description}</p>
         </div>
       </div>
     </div>
