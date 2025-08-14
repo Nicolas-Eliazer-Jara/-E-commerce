@@ -8,7 +8,7 @@ import { useCart } from "../store/useCart";
 export default function Nav() {
    const {count} = useCart();
   return (
-    <div className="bg-cuarto text-segundo h-[40px] flex justify-between items-center fixed top-0 left-0 w-full z-50  ">
+    <div className=" bg-[#f9f9f9] text-segundo h-[40px] flex justify-between items-center fixed top-0 left-0 w-full z-50  ">
       <div className="flex pl-20">
         <Image
           className=" object-contain "
@@ -17,19 +17,19 @@ export default function Nav() {
           width={20}
           height={20}
         ></Image>
-        <Link className="hover:text-white pl-2 text-[20px]" href="/">
+        <Link className="hover:text-red-700 pl-2 text-[20px]" href="/">
           E-commerce
         </Link>
       </div>
       <nav >
         <ul className="flex items-center pr-30">
-          <li className="pr-5 hover:text-white ">
+          <li className="pr-5 hover:text-[#263c88] ">
             <Link href="/">Home</Link>
           </li>
-          <li className="pr-5 hover:text-white  flex">
+          <li className="pr-5 hover:text-[#263c88]  flex">
           <Link href={"/cart"} className="flex items-center">
   Cart
-  <p className="ml-1 text-segundo bg-primero w-[18px] h-[18px] rounded-full text-[12px] flex items-center justify-center">
+  <p className="ml-1 text-white bg-primero w-[18px] h-[18px] rounded-full text-[12px] flex items-center justify-center">
     {count()}
   </p>
 </Link>

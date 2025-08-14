@@ -1,17 +1,18 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useParams } from "next/navigation";
 import { useCart } from "@/app/store/useCart";
+import { Products } from "@/app/product/product";
 import Image from "next/image";
-import { Product } from "@/app/store/useCart";
-import publi from "@/public/Fondo/fondo.png";
 import Link from "next/link";
 
 export default function ProductDetailPage() {
-  const { id } = useParams();
-  const [product, setProduct] = useState<Product | null>(null);
+  const { id } = useParams(); // id que viene de la URL
   const { addToCart } = useCart();
   const [compra, setCompra] = useState<string | null>(null);
+
+  // Buscamos el producto en nuestro array local usando el id
+  const product = Products.find((p) => String(p.id) === String(id));
 
   const messageCompra = () => {
     setCompra("Compra exitosa");
@@ -20,85 +21,85 @@ export default function ProductDetailPage() {
     }, 3000);
   };
 
-  useEffect(() => {
-    fetch(`https://fakestoreapi.com/products/${id}`)
-      .then((res) => res.json())
-      .then(setProduct);
-  }, [id]);
-
-  if (!product) return <p className="text-center h-full w-full pt-[250px]">Cargando...</p>;
+  if (!product) {
+    return (
+      <p className="text-center h-full w-full pt-[250px]">
+        Producto no encontrado
+      </p>
+    );
+  }
 
   return (
     <div className="text-[#292623] bg-gray-200 min-h-screen">
-      <div className="relative h-[200px] w-full">
-        <Image
-          className="w-full h-[200px] object-cover"
-          src={publi}
-          alt="publi"
-          fill
-          quality={100}
-        />
-      </div>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 p-15">
         <Link
           href="/"
-          className="inline-block bg-blue-600 hover:bg-blue-800 text-white py-2 px-4 rounded mb-5"
+          className="inline-block bg-[#000000] hover:bg-gray-900  text-white py-2 px-4 rounded mb-5"
         >
           Volver
         </Link>
 
-        <div className="bg-white rounded-lg shadow-md p-4 md:p-8 flex flex-col lg:flex-row">
+        <div className="bg-white rounded-lg shadow-md p-4 md:p-8 flex flex-col lg:flex-row h-[800px]">
           {/* Imagen del producto */}
-          <div className="w-full lg:w-1/2 flex justify-center items-center mb-6 lg:mb-0">
-            <Image
-              src={product.image}
-              alt={product.title}
-              width={500}
-              height={500}
-              className="object-contain w-full max-h-[500px]"
-            />
+          <div className="w-full flex justify-center items-center  ">
+            <div className="relative w-full h-full max-w-[500px] max-h-[700px] group">
+              {/* Imagen normal */}
+              <Image
+                src={product.image}
+                alt={product.title}
+                height={900}
+                width={900}
+                className="transition-opacity duration-300 w-full h-full object-cover group-hover:opacity-0 cursor-crosshair"
+              />
+              {/* Imagen hover */}
+              <Image
+                src={product.imageHover}
+                alt={`${product.title} hover`}
+                height={900}
+                width={900}
+                className="absolute top-0 left-0 w-full h-full object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100 cursor-crosshair"
+              />
+            </div>
           </div>
 
           {/* Detalles del producto */}
           <div className="w-full lg:w-1/2 p-4">
-            <h1 className="text-2xl font-semibold mb-2">{product.title}</h1>
-            <p className="text-blue-600 mb-2 text-sm">
-              ⭐ {product.rating.rate} ({product.rating.count} reviews)
-            </p>
-            <p className="text-3xl font-bold mb-2">${product.price}</p>
-            <p className="text-green-700 text-sm mb-2">Devolución gratis</p>
+          <h4 className="text-tercero text-[12px] mb-4">{product.category}</h4>
+            <h1 className="text-[21px] font-semibold mb-4">{product.title}</h1>
+            <p className="text-[14px]  mb-4">${product.price}</p>
+            <div className="border-b border-b-gray-300"></div>
+
+            <p className="text-[12px] text-gray-800 my-4">{product.description}</p>
+
+            <div className="border-b border-b-gray-300"></div>
+
+            <p className="text-green-700 text-sm mt-4">Devolución gratis</p>
             <p className="text-gray-600 text-xs mb-4">
               Tenés 30 días desde que lo recibís.
             </p>
 
-            <div className="mb-4">
-              <h2 className="text-sm font-medium mb-2">Colores</h2>
-              <div className="flex gap-2">
-                <span className="w-6 h-6 rounded bg-[#292623] border" />
-                <span className="w-6 h-6 rounded bg-gray-500 border" />
-                <span className="w-6 h-6 rounded bg-blue-500 border" />
-                <span className="w-6 h-6 rounded bg-red-500 border" />
-                <span className="w-6 h-6 rounded bg-green-500 border" />
-              </div>
-            </div>
+            
 
             <div className="mb-6">
               <h2 className="text-sm font-medium">Stock disponible</h2>
               <p className="text-xs text-gray-600">
-                Almacenado y enviado por <span className="text-green-700">Correo Argentino</span>
+                Almacenado y enviado por{" "}
+
+                <span className="text-violet-700">Fed</span>
+                <span className="text-orange-500">Ex</span>
+
               </p>
             </div>
 
             <div className="flex flex-col gap-2">
               <button
-                className="bg-blue-600 hover:bg-blue-800 text-white py-2 px-4 rounded w-full"
+                className="bg-[#263c88] hover:bg-blue-950 text-white py-2 px-4 rounded w-full"
                 onClick={messageCompra}
               >
                 Comprar ahora
               </button>
               <button
-                className="bg-blue-200 hover:bg-blue-300 text-blue-700 py-2 px-4 rounded w-full"
+                className="bg-[#000000] hover:bg-gray-900 text-white py-2 px-4 rounded w-full"
                 onClick={() => addToCart(product)}
               >
                 Agregar al carrito
@@ -112,11 +113,7 @@ export default function ProductDetailPage() {
           </div>
         </div>
 
-        {/* Descripción */}
-        <div className="bg-white rounded-lg mt-6 p-4 md:p-6">
-          <h2 className="text-lg font-medium mb-2">Descripción</h2>
-          <p className="text-sm text-gray-800">{product.description}</p>
-        </div>
+
       </div>
     </div>
   );

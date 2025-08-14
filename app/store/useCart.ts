@@ -2,16 +2,14 @@
 import { create } from "zustand";
 
 export type Product = {
-  id: number;
-  title: string;
-  image: string;
-  price: number;
-  description: string;
-  category: string;
-  rating: {
-    rate: number;
-    count: number;
-  };
+  id: number,
+      category:string,
+      title: string
+      price: number,
+      image: string,
+      imageHover: string,
+      description:string,
+
 };
 
 export type CartItem = Product & { quantity: number };

@@ -1,0 +1,234 @@
+[
+  {
+    "id": 1,
+    "nombre": "HANSEN GARMENTS",
+    "precio": 400,
+    "imagen": "/images/1.jpg",
+    "descripcion": "ERLING es uno de los artículos emblemáticos de HANSEN. Una chaqueta inspirada en la ropa de trabajo con un ajuste regular, viene con botones de cuerno, dos bolsillos ribeteados inferiores, un bolsillo de parche superior y dos bolsillos interiores. Los bordes y puños están atados.
+
+Inspirada en los textiles tradicionales africanos, esta tela jacquard francesa tiene motivos geométricos muy texturizados que se asemejan a bordados a mano colocados sobre un fondo de rayas toscamente tejido. El mango suave hace que la chaqueta parezca un hallazgo vintage. 
+
+49% Algodón 40% Poliéster 7% Acrílico 3% Otras fibras 1% Lana
+Ajuste regular
+Unlined
+Botones de bocina
+Origen: Francia
+Fabricado en Europa"
+  },
+  {
+    "id": 3,
+    "nombre": "HANSEN GARMENTS",
+    "precio": 350,
+    "imagen": "/images/2.jpg",
+    "descripcion": "BENDIK es una chaqueta inspirada en ropa de trabajo de fácil ajuste confeccionada en sarga de gabardina de algodón con una superficie suave ligeramente cepillada. Tiene tres bolsillos de parche en la parte delantera y el bolsillo interior, el yugo interior y las fijaciones son de algodón a rayas.
+
+Una sarga Gabardina sólida de alta densidad procedente de Italia con superficie cepillada.
+
+Sarga 100% algodón
+Botones de bocina
+Tres bolsillos de parche
+Un bolsillo interior
+Prenda lavada
+Origen: Italia
+Fabricado en Europa"
+  },
+{
+    "id": 3,
+    "nombre": "Pantalón jean",
+    "precio": 100,
+    "imagen": "/images/3.jpg",
+    "descripcion": "FELIX es una camiseta de manga larga con cuello redondo y mangas Raglan. Son prendas teñidas y vienen con costuras planas y una cinta de algodón en espiga en el cuello. FELIX viene en 3 prendas teñidas de colores.
+
+Un jersey de hilo slub grueso y de punto suelto con una bonita superficie estructural y una sensación suave en las manos, producido en Grecia.
+
+100% algodón
+Mangas raglán
+Jersey de hilo grueso
+Origen: Grecia
+Fabricado en Europa."
+  },
+{
+    "id": 4,
+    "nombre": "Pantalón jean",
+    "precio": 430,
+    "imagen": "/images/4.jpg",
+    "descripcion": "ERLING es uno de los artículos emblemáticos de HANSEN. Una chaqueta inspirada en la ropa de trabajo con un ajuste regular, viene con botones de cuerno, dos bolsillos ribeteados inferiores, un bolsillo de parche superior y dos bolsillos interiores. Los puños, el dobladillo y el cuello están atados en tela propia.
+
+El tejido es un jacquard de fabricación francesa que tiene un diseño de follaje abstracto compuesto por diferentes tonos de verde y negro y de diferentes texturas. Es una prenda lavada para un mango más suave. 
+
+49% Algodón, 40% poliéster, 7% acrílico, 3% otras fibras, 1% lana
+Ajuste regular
+Unlined
+Botones de bocina
+Origen: Francia
+Fabricado en Europa"
+  },
+{
+    "id": 5,
+    "nombre": "Pantalón jean",
+    "precio": 200,
+    "imagen": "/images/pantalon-jean.jpg",
+    "descripcion": "HENNING es la camiseta de todos los días de Hansen. El diseño es sencillo y sin sorpresas. El ajuste es relajado y la camisa está cosida con costuras talladas en las mangas y los costados. HENNING viene con un bolsillo en el pecho, una tapeta francesa y botones naturales de nácar.
+
+Esta ligera sarga de algodón italiana es excepcionalmente suave y cubre suavemente el cuerpo. Es extremadamente cómodo de llevar y por eso forma parte de nuestras colecciones cada temporada. Verano e invierno.
+
+100% algodón  
+Ajuste relajado
+Sarga ligera
+Botones de nácar
+Prenda lavada, teñida  
+Origen: Italia 
+Fabricado en Europa  ."
+  },
+{
+    "id": 6,
+    "nombre": "Pantalón jean",
+    "precio": 240,
+    "imagen": "/images/pantalon-jean.jpg",
+    "descripcion": "BOBBY es un par de pantalones de corte ancho que funcionan bien en cualquier edad o forma corporal. Tiene pliegues en la parte delantera, bolsillos traseros y dobladillos en el dobladillo.
+La costura lateral está torcida para dar una forma fácil y relajada que sigue el cuerpo de una manera bastante orgánica y hace que los pantalones sean súper cómodos de usar.
+
+La tela es una sarga de gabardina sólida y tejida de Italia con una superficie de efecto lavado. Perfecto para uso intensivo y uso diario.
+
+Sarga 100% algodón
+Botones de bocina
+Corte ancho
+Frente de un solo pliegue
+Esposadas dobladas
+Costura lateral retorcida
+Fabricado en Europa"
+  },
+{
+    "id": 7,
+    "nombre": "Camisa jacquard con cupé de lima",
+    "precio": 240,
+    "imagen": "/images/pantalon-jean.jpg",
+    "descripcion": "Camisa de trabajo informal de corte regular confeccionada en algodón índigo con lima texturizada coupé jacquard. Terminado con botones de nácar con el logotipo NN.07.
+Ajuste relajado
+Sentimiento estructurado
+Jacquard
+Botones de nácar
+Número de artículo 2560000092
+Fabricado en China
+"
+  },
+{
+    "id": 8,
+    "nombre": "Suéter de alpaca",
+    "precio": 340,
+    "imagen": "/images/pantalon-jean.jpg",
+    "descripcion": "Suéter liviano de corte regular confeccionado con una suave mezcla de alpaca italiana con hombros doblados y sutiles detalles de moda. Acabado con un clásico cuello redondo y costilla ancha.
+Material
+48% alpaca
+26% poliamida reciclada
+14% lana certificada
+8% poliamida
+2% elastano
+2% viscosa"
+  },
+{
+    "id": 9,
+    "nombre": "Cárdigan Mouline",
+    "precio": 290,
+    "imagen": "/images/pantalon-jean.jpg",
+    "descripcion": "Cárdigan en corte relajado de hilo mouliné aireado en mezcla de alpaca y lana. Tiene una sensación suave y voluminosa y elegantes botones corozo.
+50% lana
+40% acrílico
+10% alpaca"
+  },
+{
+    "id": 10,
+    "nombre": "Cárdigan Mouline",
+    "precio": 290,
+    "imagen": "/images/pantalon-jean.jpg",
+    "descripcion": "Cárdigan en corte relajado de hilo mouliné aireado en mezcla de alpaca y lana. Tiene una sensación suave y voluminosa y elegantes botones corozo.
+50% lana
+40% acrílico
+10% alpaca"
+  },
+{
+    "id": 11,
+    "nombre": "Pantalones de mezcla de lino de ajuste relajado",
+    "precio": 200,
+    "imagen": "/images/pantalon-jean.jpg",
+    "descripcion": "Pantalón de traje de corte relajado con pliegues en la parte delantera y mano flotante Los pantalones están confeccionados en tejido Panamá 290 g/m² mezclado con viscosa LENZING™ ECOVERO™ y lino europeo para un diseño robusto y duradero. Tratamiento de lavado enzimático, bolsillos traseros y cierre de barbilla
+60 % LENZING™ECOVERO™ viscosa
+20% algodón
+20 % lino europeo
+290 g/m²"
+  },
+{
+    "id": 12,
+    "nombre": "Cárdigan Jacquard",
+    "precio": 340,
+    "imagen": "/images/pantalon-jean.jpg",
+    "descripcion": "Cárdigan de gran tamaño en corte regular con cuello en V en una mezcla italiana de lana y alpaca, confeccionado en un llamativo tejido jacquard con estampado exclusivo NN.07. Los hilos deteriorados y los tonos contrastantes confieren a cada parte un carácter único y llamativo.
+Material
+50% lana
+40% acrílico
+10% alpaca"
+  },
+{
+    "id": 13,
+    "nombre": "Franco
+Mezcla de lana Rock,
+    "precio": 800,
+    "imagen": "/images/pantalon-jean.jpg",
+    "descripcion": "Abrigo medio corto diseñado con tapeta de botones y creado en un hilo de lana multihilo liso y medio pesado de la conocida empresa italiana de tejido de telas Manteco.
+
+Material
+40% lana
+35% acrílico
+20% poliéster
+5% poliamida
+520 g/m2"
+  },
+{
+    "id": 14,
+    "nombre": "Freddy
+Camisa con estampado integral",
+    "precio": 200,
+    "imagen": "/images/pantalon-jean.jpg",
+    "descripcion": "Camisa ligera en material de algodón aireado, diseñada con estampado integral y dobladillo recto.
+Material
+100% algodón"
+  },
+{
+    "id": 15,
+    "nombre": "Atlas
+Chaqueta bomber",
+    "precio": 420,
+    "imagen": "/images/pantalon-jean.jpg",
+    "descripcion": "CChaqueta de transición estilo bombardero de ajuste relajado hecha de una mezcla de poliamida brillante con un acabado repelente al agua. Con un bolsillo en la manga en el brazo izquierdo y una sensación cepillada y sedosa. El acolchado Primaloft® y la cremallera NN.07 proporcionan comodidad y protección adicionales.
+Material
+75% poliéster
+25% poliamida"
+  },
+{
+    "id": 15,
+    "nombre": "Gael
+Chaqueta Jacquard
+
+",
+    "precio": 520,
+    "imagen": "/images/pantalon-jean.jpg",
+    "descripcion": "Chaqueta hasta la cadera de corte regular confeccionada en una fuerte mezcla de lana con tejido jacquard. Equipado con dos grandes bolsillos delanteros, una distintiva cremallera bidireccional y bolsillos interiores ocultos.
+Material
+74% lana
+26% poliéster"
+  },
+{
+    "id": 16,
+    "nombre": "Jonás
+Camiseta de lana hervida
+
+",
+    "precio": 200,
+    "imagen": "/images/pantalon-jean.jpg",
+    "descripcion": "Sobrecamisa confeccionada en suave lana merino cocida, diseñada con cuello camisero, bordes crudos y botones con logo NN.07.
+
+Material
+100% Merino"
+  },
+]
+
