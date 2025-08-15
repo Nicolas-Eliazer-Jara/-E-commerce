@@ -108,7 +108,7 @@ export default function ProductsPage() {
         {/* Productos */}
         <main className="w-full lg:w-3/4">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredProducts.map(({ id, title, image, imageHover, price }) => (
+            {filteredProducts.map(({ id, title, image, imageHover, price,description }) => (
               <div
                 key={id}
                 className="bg-white border border-gray-500 rounded shadow hover:shadow-lg transition p-3 flex flex-col justify-between"
@@ -140,7 +140,7 @@ export default function ProductsPage() {
                 </Link>
 
                 <button
-                  onClick={() => addToCart({ id, title, image, price ,description })}
+                  onClick={() => addToCart({ id, title, image, imageHover, price,description })}
                   className="mt-4 bg-primero text-cuarto hover:bg-[#813c88] py-1 px-3 text-sm rounded w-[90%] mx-auto"
                 >
                   Agregar al carrito

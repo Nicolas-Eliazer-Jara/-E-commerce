@@ -1,8 +1,14 @@
 import type { Metadata } from "next";
-import Nav from '@/app/components/nav'
-import Fotter from '@/app/components/footer'
+import { Noto_Serif } from "next/font/google";
+import Nav from "@/app/components/nav";
+import Fotter from "@/app/components/footer";
 import "./styles/globals.css";
 
+const notoSerif = Noto_Serif({
+  weight:["300",],
+  style:["italic","normal"],
+  subsets:["latin"]
+    })
 
 export const metadata: Metadata = {
   title: "E-commerce",
@@ -14,10 +20,12 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+
   return (
     <html lang="en">
-      <body className="">
-         <Nav></Nav>
+      <body className={notoSerif.className}>
+        <Nav></Nav>
         {children}
         <Fotter></Fotter>
       </body>

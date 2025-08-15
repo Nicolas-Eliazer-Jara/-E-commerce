@@ -24,7 +24,7 @@ export default function CartPage() {
             >
               <button
                 onClick={() => removeFromCart(id)}
-                className="absolute top-2 right-2 text-sm border rounded-full h-6 w-6 flex items-center justify-center bg-white text-segundo hover:bg-[#85d6c9] hover:text-white"
+                className="absolute top-2 right-2 text-sm border rounded-full h-6 w-6 flex items-center justify-center bg-white text-segundo hover:bg-gray-300 hover:text-white"
               >
                 ×
               </button>
@@ -45,7 +45,7 @@ export default function CartPage() {
                 <div className="flex items-center">
                   <button
                     onClick={() => decreaseQty(id)}
-                    className="px-3 border border-white rounded-l hover:bg-[#85d6c9] hover:text-[#1A1A1A]"
+                    className="px-3 font-black border border-white rounded-l hover:bg-gray-200 hover:text-[#1A1A1A]"
                   >
                     -
                   </button>
@@ -54,7 +54,7 @@ export default function CartPage() {
                   </span>
                   <button
                     onClick={() => increaseQty(id)}
-                    className="px-3 border border-white rounded-r hover:bg-[#85d6c9] hover:text-[#1A1A1A]"
+                    className="px-3 font-black border border-white rounded-r hover:bg-gray-200 hover:text-[#1A1A1A]"
                   >
                     +
                   </button>
@@ -86,7 +86,7 @@ export default function CartPage() {
 
           <button
             onClick={clearCart}
-            className="mt-6 w-full bg-[#1A1A1A] hover:bg-red-700 text-white py-2 rounded"
+            className="mt-6 w-full bg-[#000000] hover:bg-[#1A1A1A] text-white py-2 rounded"
           >
             Reset carrito
           </button>
