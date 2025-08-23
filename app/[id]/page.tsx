@@ -7,14 +7,38 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function ProductDetailPage() {
-  const { id } = useParams(); // id que viene de la URL
+  const { id } = useParams(); // id 
   const { addToCart } = useCart();
   const [compra, setCompra] = useState<string | null>(null);
 
-  // Buscamos el producto en nuestro array local usando el id
+  const buttonClick = () => {
+    const audio = new Audio('/sound/button.wav');
+    audio.play();
+  }
+  const buttonClickBuy = () => {
+    const audio = new Audio('/sound/button-buy.wav');
+    audio.play();
+  }
+
+
+  // producto de array local
   const product = Products.find((p) => String(p.id) === String(id));
 
+
   const messageCompra = () => {
+
+    const data = {
+      id: product?.id,
+      price: product?.price,
+      title :product?.title,
+      date: new Date().toISOString(),
+      userId:1,
+    }
+
+    console.log("📦 Enviando orden al backend...");
+    console.log(JSON.stringify(data, null, 2));
+
+
     setCompra("Compra exitosa");
     setTimeout(() => {
       setCompra(null);
@@ -30,16 +54,16 @@ export default function ProductDetailPage() {
   }
 
   return (
-    <div className="text-[#292623] bg-gray-200 min-h-screen">
+    <div className="text-[#292623] bg-gray-200 min-h-screen  selection:bg-[#263c88] selection:text-white min-w-[400px] ">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 p-15">
         <Link
           href="/"
-          className="inline-block bg-[#000000] hover:bg-gray-900  text-white py-2 px-4 rounded mb-5"
+          className="flex lg:mx-0 mx-auto w-[80px]  bg-[#000000] hover:bg-gray-900  text-white py-2 px-4 rounded mb-5 "
         >
           Volver
         </Link>
 
-        <div className="bg-white rounded-lg shadow-md p-4 md:p-8 flex flex-col lg:flex-row h-[800px]">
+        <div className="bg-white rounded-lg shadow-md p-4 md:p-8 flex flex-col lg:flex-row lg:h-[800px] h-[1250px]  min-w-[400px]">
           {/* Imagen del producto */}
           <div className="w-full flex justify-center items-center  ">
             <div className="relative w-full h-full max-w-[500px] max-h-[700px] group">
@@ -93,16 +117,16 @@ export default function ProductDetailPage() {
 
             <div className="flex flex-col gap-2">
               <button
-                className="bg-[#263c88] hover:bg-blue-950 text-white py-2 px-4 rounded w-full"
-                onClick={messageCompra}
+                className="bg-[#263c88] hover:bg-blue-950 text-white py-2 px-4 rounded w-full cursor-pointer"
+                onClick={()=> {messageCompra() ; buttonClickBuy();}}
               >
-                Comprar ahora
+                Comprar Ahora
               </button>
               <button
-                className="bg-[#000000] hover:bg-gray-900 text-white py-2 px-4 rounded w-full"
-                onClick={() => addToCart(product)}
+                className="bg-[#000000] hover:bg-gray-900 text-white py-2 px-4 rounded w-full cursor-pointer"
+                onClick={() => {addToCart(product); buttonClick(); }}
               >
-                Agregar al carrito
+                Agregar a Card
               </button>
               {compra && (
                 <p className="mt-2 text-center text-green-600 font-semibold animate-fade-in">

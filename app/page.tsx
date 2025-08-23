@@ -18,12 +18,17 @@ export default function ProductsPage() {
     return sortOrder === "asc" ? a.price - b.price : b.price - a.price;
   });
 
+  const buttonClick = () => {
+    const audio = new Audio('/sound/button.wav')
+    audio.play();
+  }
+
   return (
     <div className="bg-white text-segundo pb-10">
       {/* Banner superior */}
       <div className="relative w-full h-screen">
         <Image
-          className="object-cover"
+          className="object-cover "
           src={fondo}
           alt="fondo"
           fill
@@ -63,7 +68,7 @@ export default function ProductsPage() {
             >
               Camisa
             </p>
-          
+
             <p
               onClick={() => setCategory("PANTALON")}
               className="cursor-pointer pt-2 hover:text-red-700"
@@ -108,45 +113,57 @@ export default function ProductsPage() {
         {/* Productos */}
         <main className="w-full lg:w-3/4">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredProducts.map(({ id, title, image, imageHover, price,description }) => (
-              <div
-                key={id}
-                className="bg-white border border-gray-500 rounded shadow hover:shadow-lg transition p-3 flex flex-col justify-between"
-              >
-                <Link href={`/${id}`}>
-                  <div className="border-b border-gray-500 pb-1 mb-1 w-full h-[400px] group relative overflow-hidden">
-                    {/* Imagen principal */}
-                    <Image
-                      src={image}
-                      alt={title}
-                      height={900}
-                      width={900}
-                      className="transition-opacity duration-300 w-full h-full object-cover group-hover:opacity-0"
-                    />
-                    {/* Imagen hover */}
-                    <Image
-                      src={imageHover}
-                      alt={`${title} hover`}
-                      height={900}
-                      width={900}
-                      className="absolute top-0 left-0 w-full h-full object-cover opacity-0 transition-opacity  duration-300 group-hover:opacity-100"
-                    />
-                  </div>
-
-                  <div className="px-4">
-                    <p className="text-[13px] pt-1 line-clamp-2">{title}</p>
-                    <p className="text-[14px] pt-1 ">€{price}</p>
-                  </div>
-                </Link>
-
-                <button
-                  onClick={() => addToCart({ id, title, image, imageHover, price,description })}
-                  className="mt-4 bg-primero text-cuarto hover:bg-[#813c88] py-1 px-3 text-sm rounded w-[90%] mx-auto"
+            {filteredProducts.map(
+              ({ id, title, image, imageHover, price, description }) => (
+                <div
+                  key={id}
+                  className="bg-white border border-gray-500 rounded shadow hover:shadow-lg transition p-3 flex flex-col justify-between"
                 >
-                  Agregar al carrito
-                </button>
-              </div>
-            ))}
+                  <Link href={`/${id}`}>
+                    <div className="border-b border-gray-500 pb-1 mb-1 w-full h-[400px] group relative overflow-hidden">
+                      {/* Imagen principal */}
+                      <Image
+                        src={image}
+                        alt={title}
+                        height={900}
+                        width={900}
+                        className="transition-opacity duration-300 w-full h-full object-cover group-hover:opacity-0"
+                      />
+                      {/* Imagen hover */}
+                      <Image
+                        src={imageHover}
+                        alt={`${title} hover`}
+                        height={900}
+                        width={900}
+                        className="absolute top-0 left-0 w-full h-full object-cover opacity-0 transition-opacity  duration-300 group-hover:opacity-100"
+                      />
+                    </div>
+
+                    <div className="px-4">
+                      <p className="text-[13px] pt-1 line-clamp-2">{title}</p>
+                      <p className="text-[14px] pt-1 ">€{price}</p>
+                    </div>
+                  </Link>
+
+                  <button
+                    onClick={() => {
+                      addToCart({
+                        id,
+                        title,
+                        image,
+                        imageHover,
+                        price,
+                        description,
+                      });
+                      buttonClick(); 
+                    }}
+                    className="mt-4 bg-primero text-cuarto  py-1 px-3 text-sm rounded w-[90%] mx-auto cursor-pointer"
+                  >
+                    Agregar al carrito
+                  </button>
+                </div>
+              )
+            )}
           </div>
         </main>
       </div>
