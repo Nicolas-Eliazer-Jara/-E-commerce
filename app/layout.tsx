@@ -3,6 +3,7 @@ import { Noto_Serif } from "next/font/google";
 import Nav from "@/app/components/nav";
 import Fotter from "@/app/components/footer";
 import "./styles/globals.css";
+import I18nProvider from "./components/I18nProvider";
 
 const notoSerif = Noto_Serif({
   weight:["300",],
@@ -25,9 +26,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={notoSerif.className}>
+        <I18nProvider>
         <Nav></Nav>
         {children}
         <Fotter></Fotter>
+        </I18nProvider>
       </body>
     </html>
   );

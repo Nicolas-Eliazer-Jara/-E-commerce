@@ -4,11 +4,11 @@ import { persist } from "zustand/middleware";
 export type Product = {
   id: number;
   category: string;
-  title: string;
+  titleKey: string;
   price: number;
   image: string;
   imageHover: string;
-  description: string;
+  descriptionKey: string;
 };
 
 export type CartItem = Product & { quantity: number };

@@ -1,10 +1,11 @@
 export type Product = {
     id: number;
-    title:string;
+    titleKey:string;
     image:string;
     price:number;
     category:string;
     rating:string;
+    descriptionKey:string;
 };
 
 export type Action = 

@@ -5,9 +5,12 @@ import Image from "next/image";
 import { useCart } from "./store/useCart";
 import fondo from "@/public/Fondo/BANNER_webstore.webp";
 import { Products } from "./product/product";
+import { useTranslation } from "react-i18next";
 
 export default function ProductsPage() {
+  const { t } = useTranslation();
   const { addToCart } = useCart();
+
   const [category, setCategory] = useState<string>("all");
   const [sortOrder, setSortOrder] = useState<"asc" | "desc">("asc");
 
@@ -19,16 +22,16 @@ export default function ProductsPage() {
   });
 
   const buttonClick = () => {
-    const audio = new Audio('/sound/button.wav')
+    const audio = new Audio("/sound/button.wav");
     audio.play();
-  }
+  };
 
   return (
     <div className="bg-white text-segundo pb-10">
       {/* Banner superior */}
       <div className="relative w-full h-screen">
         <Image
-          className="object-cover "
+          className="object-cover"
           src={fondo}
           alt="fondo"
           fill
@@ -41,71 +44,68 @@ export default function ProductsPage() {
         {/* Filtros */}
         <aside className="w-full lg:w-1/4">
           <h1 className="text-[17px] bg-segundo text-white rounded px-2 py-2">
-            CATEGORÍAS
+            {t("category")}
           </h1>
           <div className="text-[14px] pt-3 text-gray-700 space-y-1">
             <p
               onClick={() => setCategory("all")}
               className="cursor-pointer pt-2 hover:text-red-700"
             >
-              Todas
+              {t("all")}
             </p>
             <p
               onClick={() => setCategory("ABRIGO")}
               className="cursor-pointer pt-2 hover:text-red-700"
             >
-              Abrigo
+              {t("coat")}
             </p>
             <p
               onClick={() => setCategory("SUETER")}
               className="cursor-pointer pt-2 hover:text-red-700"
             >
-              Suéter
+              {t("swetear")}
             </p>
             <p
               onClick={() => setCategory("CAMISA")}
               className="cursor-pointer pt-2 hover:text-red-700"
             >
-              Camisa
+              {t("shirt")}
             </p>
-
             <p
               onClick={() => setCategory("PANTALON")}
               className="cursor-pointer pt-2 hover:text-red-700"
             >
-              Pantalon
+              {t("pants")}
             </p>
-
             <p
               onClick={() => setCategory("ZAPATOS")}
               className="cursor-pointer pt-2 hover:text-red-700"
             >
-              Zapatos
+              {t("shoes")}
             </p>
-
             <p
               onClick={() => setCategory("BOINA")}
               className="cursor-pointer pt-2 hover:text-red-700"
             >
-              Boina
+              {t("beret")}
             </p>
           </div>
 
           <h1 className="text-[17px] mt-10 bg-segundo text-white rounded px-2 py-2">
-            PRECIO
+            {t("price")}
           </h1>
           <div className="text-[14px] pt-3 text-gray-700 space-y-1">
             <p
               onClick={() => setSortOrder("desc")}
               className="cursor-pointer pt-2 hover:text-red-700"
             >
-              Mayor precio
+              {t("highestPrice")}
             </p>
             <p
               onClick={() => setSortOrder("asc")}
               className="cursor-pointer pt-2 hover:text-red-700"
             >
-              Menor precio
+              {t("lowestPrice")}
             </p>
           </div>
         </aside>
@@ -114,7 +114,7 @@ export default function ProductsPage() {
         <main className="w-full lg:w-3/4">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredProducts.map(
-              ({ id, title, image, imageHover, price, description }) => (
+              ({ id, titleKey, image, imageHover, price, descriptionKey }) => (
                 <div
                   key={id}
                   className="bg-white border border-gray-500 rounded shadow hover:shadow-lg transition p-3 flex flex-col justify-between"
@@ -124,7 +124,7 @@ export default function ProductsPage() {
                       {/* Imagen principal */}
                       <Image
                         src={image}
-                        alt={title}
+                        alt={t(titleKey)}
                         height={900}
                         width={900}
                         className="transition-opacity duration-300 w-full h-full object-cover group-hover:opacity-0"
@@ -132,15 +132,17 @@ export default function ProductsPage() {
                       {/* Imagen hover */}
                       <Image
                         src={imageHover}
-                        alt={`${title} hover`}
+                        alt={`${t(titleKey)} hover`}
                         height={900}
                         width={900}
-                        className="absolute top-0 left-0 w-full h-full object-cover opacity-0 transition-opacity  duration-300 group-hover:opacity-100"
+                        className="absolute top-0 left-0 w-full h-full object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100"
                       />
                     </div>
 
                     <div className="px-4">
-                      <p className="text-[13px] pt-1 line-clamp-2">{title}</p>
+                      <p className="text-[13px] pt-1 line-clamp-2">
+                        {t(titleKey)}
+                      </p>
                       <p className="text-[14px] pt-1 ">€{price}</p>
                     </div>
                   </Link>
@@ -149,19 +151,20 @@ export default function ProductsPage() {
                     onClick={() => {
                       addToCart({
                         id,
-                        title,
+                        titleKey,
                         image,
                         imageHover,
                         price,
-                        description,
+                        descriptionKey,
+                        category
                       });
-                      buttonClick(); 
+                      buttonClick();
                     }}
-                    className="mt-4 bg-primero text-cuarto  py-1 px-3 text-sm rounded w-[90%] mx-auto cursor-pointer"
+                    className="mt-4 bg-primero text-cuarto py-1 px-3 text-sm rounded w-[90%] mx-auto cursor-pointer"
                   >
-                    Agregar al carrito
+                    {t("addToCart")}
                   </button>
-                </div>
+                </div>    
               )
             )}
           </div>

@@ -2,18 +2,20 @@
 import Image from "next/image";
 import { useCart } from "../store/useCart";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 export default function CartPage() {
+  const { t } = useTranslation();
 
   const buttonClick = () => {
     const button = new Audio("/sound/button.wav");
     button.play();
-  }
+  };
 
   const buttonClickBuy = () => {
     const button = new Audio("/sound/button-buy.wav");
     button.play();
-  }
+  };
 
   const [compra, setCompra] = useState<string | null>(null);
   const {
@@ -26,30 +28,25 @@ export default function CartPage() {
     clearCart,
   } = useCart();
 
-  
-
   const messageCompra = () => {
+    const newOrder = {
+      userId: 1,
+      date: new Date().toISOString(),
+      total: total(),
+      items: items.map(({ id, titleKey, price, quantity }) => ({
+        id,
+        titleKey,
+        price,
+        quantity,
+        subTotal: price * quantity,
+      })),
+    };
 
-    const order =  {
-    userId:1,
-    date: new Date().toISOString(),
-    total:total(),
-    items: items.map(({id, title, price, quantity}) => ({
-      id, 
-      title,
-      price,
-      quantity,
-      subTotla: price * quantity,
-    })),
-  }
+    console.log("📦 Enviando orden al backend...");
+    console.log(JSON.stringify(newOrder, null, 2));
 
-  console.log("📦 Enviando orden al backend...");
-  console.log(JSON.stringify(order, null, 2));
-
-  setCompra("Compra exitosa");
-  setTimeout(() => setCompra(null), 3000);
-
-  
+    setCompra("Compra exitosa");
+    setTimeout(() => setCompra(null), 3000);
   };
 
   return (
@@ -57,13 +54,16 @@ export default function CartPage() {
       <div className="flex flex-col lg:flex-row gap-10 min-w-[400px]">
         {/* Carrito */}
         <div className="flex-1 min-h-[500px] mx-auto ">
-          {items.map(({ id, title, image, price, quantity }) => (
+          {items.map(({ id, titleKey, image, price, quantity }) => (
             <div
               key={id}
               className="relative border rounded mb-4 flex flex-col md:flex-row items-center bg-segundo text-white"
             >
               <button
-                onClick={() => {removeFromCart(id) ; buttonClick()}}
+                onClick={() => {
+                  removeFromCart(id);
+                  buttonClick();
+                }}
                 className="absolute top-2 right-2 text-sm border rounded-full h-6 w-6 flex items-center justify-center bg-white text-segundo hover:bg-gray-300 hover:text-white"
               >
                 ×
@@ -73,18 +73,27 @@ export default function CartPage() {
                 <Image
                   className="object-contain w-[200px] h-[200px]"
                   src={image}
-                  alt={title}
+                  alt={t(titleKey)}
                   width={900}
                   height={900}
                 />
               </div>
 
               <div className="p-6 w-full md:w-auto">
-                <p className="pb-2">{title}</p>
-                <p className="pb-2">Precio: $ {price}</p>
+                {/* 🔑 aquí corregido */}
+                <p className="pb-2">{t(titleKey)}</p>
+                <p className="pb-2">{t("titleKey")}</p>
+
+
+                <p className="pb-2">
+                  {t("price")} : €{price}
+                </p>
                 <div className="flex items-center">
                   <button
-                    onClick={() => {decreaseQty(id) ; buttonClick()}}
+                    onClick={() => {
+                      decreaseQty(id);
+                      buttonClick();
+                    }}
                     className="px-3 font-black border border-white rounded-l hover:bg-gray-200 hover:text-[#1A1A1A]"
                   >
                     -
@@ -93,7 +102,10 @@ export default function CartPage() {
                     {quantity}
                   </span>
                   <button
-                    onClick={() => {increaseQty(id) ; buttonClick()}}
+                    onClick={() => {
+                      increaseQty(id);
+                      buttonClick();
+                    }}
                     className="px-3 font-black border border-white rounded-r hover:bg-gray-200 hover:text-[#1A1A1A]"
                   >
                     +
@@ -107,35 +119,41 @@ export default function CartPage() {
         {/* Resumen */}
         <div className="w-full lg:w-[400px] mx-auto h-fit border border-gray-300 rounded p-6 shadow-md sm:mx-2">
           <h1 className="text-center text-lg font-black border-b border-gray-500 pb-4 mb-4">
-            Resumen del pedido
+            {t("order")}
           </h1>
           <div className="space-y-4 text-sm">
             <div className="flex justify-between">
-              <span>Cantidad de productos</span>
+              <span>{t("NumberOfProducts")}</span>
               <span>{count()}</span>
             </div>
             <div className="flex justify-between">
-              <span>Envío</span>
+              <span>{t("shipment")}</span>
               <span className="text-green-700">Gratis</span>
             </div>
             <div className="flex justify-between font-bold text-base">
-              <span>Total:</span>
-              <span>${total().toFixed(2)}</span>
+              <span>{t("total")}:</span>
+              <span>€{total().toFixed(2)}</span>
             </div>
           </div>
 
           <button
-            onClick={()=> {clearCart(); buttonClick()}}
+            onClick={() => {
+              clearCart();
+              buttonClick();
+            }}
             className="mt-6 w-full bg-[#000000] hover:bg-[#1A1A1A] text-white py-2 rounded"
           >
-            Vaciar Card
+            {t("emptyCart")}
           </button>
 
           <button
-            onClick={()=> {messageCompra(); buttonClickBuy();}}
+            onClick={() => {
+              messageCompra();
+              buttonClickBuy();
+            }}
             className="mt-2 w-full bg-green-700 hover:bg-green-800 text-white py-2 rounded"
           >
-            Comprar
+            {t("buyNow")}
           </button>
 
           {compra && (
