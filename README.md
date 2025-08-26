@@ -10,20 +10,24 @@ E-commerce desarrollado con **Next.js**, **TypeScript**, **TailwindCSS** y manej
 - [React](https://reactjs.org/) – Librería principal para la UI.
 - [TypeScript](https://www.typescriptlang.org/) – Tipado estático para mayor seguridad.
 - [Tailwind CSS](https://tailwindcss.com/) – Utilidades CSS modernas y personalizables.
-- [FakeStore API](https://fakestoreapi.com/) – Datos simulados de productos.
 - `useReducer` – Lógica global del carrito de compras.
+- **Soporte de traducción** – Textos dinámicos en Español/Inglés.
+- **Audios en botones** – Feedback sonoro para la interacción del usuario.
+- **Datos propios cargados manualmente** – Productos personalizados sin depender de APIs externas.
 
 ---
 
 ## 📸 Vista previa
 
-![Vista previa](./public/demo.gif)
+![Vista previa](./public/demo.png)
 
 ---
 
 ## 📦 Funcionalidades
 
-- 🛍 Listado de productos dinámico desde API.
+- 🛍 Listado de productos cargados manualmente.
+- 🌎 Soporte **multi-idioma**: Español e Inglés.
+- 🔊 **Sonidos en botones** para mejorar la experiencia de usuario.
 - 🔎 Filtro por categoría.
 - 📊 Orden por precio (mayor y menor).
 - 🛒 Carrito de compras:
@@ -44,6 +48,7 @@ E-commerce desarrollado con **Next.js**, **TypeScript**, **TailwindCSS** y manej
 git clone https://github.com/Nicolas-Eliazer-Jara/-E-commerce
 cd -E-commerce
 
+
 2. Instalá las dependencias:
 
 ```bash
@@ -56,14 +61,16 @@ npm run dev
 
 ## 📁 Estructura del proyecto
 
-/app
-├── /pages
-├── /cart
-├── /[id]                 ← Detalle del producto
-├── /store/useCart.ts     ← Lógica del carrito con useReducer
-├── /components
-├── /styles/globals.css   ← Tailwind con temas personalizados
-├── layout.tsx
+
+app
+│   ├── cart
+│   ├── components
+│   ├── [id]
+│   ├── product
+│   ├── reducers
+│   ├── store
+│   ├── styles
+│   └── types
 
 ## 🎨 Temas personalizados
 
